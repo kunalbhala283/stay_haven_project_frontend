@@ -2,28 +2,35 @@ import { Fragment ,useEffect,useState} from "react";
 
 import axios from 'axios'
 import InfiniteScroll from "react-infinite-scroll-component"
-import { Navbar, HotelCard } from "../../components";
+import { Navbar, HotelCard ,Categories } from "../../components";
 import "./Home.css"
+import { useCategory } from "../../context";
 export const Home = () => {
     const [hasMore, setHasMore ] = useState(true);
     const [hotelsToShow, setHotelsToShow]= useState([]);
     const [currentIndex, setCurrentIndex] = useState(16);
     const [testData, setTestData] = useState()
     const [hotels, setHotels] = useState([]);
-
+    const {hotelCategory} = useCategory();
     useEffect(()=>{
          (async () =>{
            try{
-              const { data } = await axios.get("https://stayhaven-project.onrender.com/api/hotels");
+              const { data } = await axios.get(`https://stayhaven-project.onrender.com/api/hotels/?category=${hotelCategory}`);
+              
               setTestData(data);
+             
               setHotels(data ? data.slice(0,16):[]);
+              console.log(testData)
+              if(data.length===0){
+                alert("Currently no hotel available")
+              }
               
             }
            catch(err){
                  console.log(err);
            }
          }) ();
-    },[]);
+    },[hotelCategory]);
 
     const fetchMoreData = () => {
         if(hotels.length>= testData.length){
@@ -44,6 +51,9 @@ export const Home = () => {
     return (
         <Fragment>
             <Navbar />
+            <Categories/>
+        
+            
 
                 {
                     hotels && hotels.length>0 ? (

@@ -1,0 +1,31 @@
+.categories{
+    
+    background-color: var(--background-color);
+    padding: 6rem 2rem 1rem 2rem;
+    color: var(--text-color-primary);
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height : 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+
+}
+
+.gap-large {
+    gap: 2rem;
+}
+
+
+.buttonclick{
+    
+    color: #9c6644;
+    background-color: var(  --background-color);
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--text-color-primary) ;
+}

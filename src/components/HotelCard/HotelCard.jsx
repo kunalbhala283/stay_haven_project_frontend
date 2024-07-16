@@ -1,7 +1,7 @@
 import "./HotelCard.css"
 
 export const HotelCard = ({hotel}) => {
-    console.log(hotel);
+    
     const { _id, name, image, city, state, rating, price}=hotel;
     return (
         <div className="relative hotelcard-container shadow cursor-pointer">

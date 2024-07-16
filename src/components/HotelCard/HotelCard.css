@@ -12,6 +12,7 @@
 }
 
 .hotelcard-details {
+    background-color: aliceblue;
     color: var(--text-color-primary);
     padding: 8px;
 }
