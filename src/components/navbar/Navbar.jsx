@@ -1,7 +1,16 @@
+import { useDate } from '../../context';
+import { dateReducer } from '../../reducer';
 import './Navbar.css'
 import React from 'react';
 
 export const Navbar = () => {
+
+    const {dateDispatch} = useDate();
+    const handleSearchClick = () => {
+        dateDispatch({
+            type: "OPEN_SEARCH_MODAL",
+        });
+    };
     return (
         <header className="heading d-flex align-center">
    
@@ -9,7 +18,7 @@ export const Navbar = () => {
         <h1 className="heading-title">
             <a className="link" href="/">StayHaven</a>
         </h1>
-        <div className="form-container d-flex align-center cursor-pointer shadow">
+        <div className="form-container d-flex align-center cursor-pointer shadow" onClick={handleSearchClick}>
             <span className="form-option">Any Where</span>
             <span className='border-right-1px'></span>
             <span className="form-option">Any Week</span>
